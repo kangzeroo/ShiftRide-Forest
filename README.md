@@ -10,6 +10,7 @@ Additional Documentation:
 
 - [Trello board](https://trello.com/b/B1wqfLTR/shiftride-tech)
 - [GraphQL schema](http://localhost:6010/graphiql)
+- Figma Designs
 
 ## Step 0: Prerequisites
 
