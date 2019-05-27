@@ -1,0 +1,17 @@
+METHOD	     ROUTE							INTERFACE
+
+POST		      /owner/create							typeform
+GET+POST	     /owner/:ownerId/details					typeform
+GET		         /owner/:ownerId/vehicles/list					api
+POST		      /owner/:ownerId/vehicles/create				typeform
+GET+POST	     /owner/:ownerId/vehicles/:vehicleId/details			api
+GET		         /owner/:ownerId/ride/:rideId/report				api
+
+GET		         /renter/search-vehicles					api
+POST		        /renter/create							typeform
+GET+POST	     /renter/:renterId/details					typeform
+GET		         /renter/:renterId/ride/list					api
+POST		        /renter/:renterId/ride/start					api
+POST		        /renter/:renterId/ride/:rideId/end				api
+POST		        /renter/:renterId/ride/:rideId/report				typeform
+POST		        /renter/:renterId/ride/:rideId/issue				typeform
