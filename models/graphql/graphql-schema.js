@@ -22,7 +22,7 @@ module.exports.Schema = (async () => {
         return prepare(await Vehicle.findOne(ObjectId(vehicleId)));
       },
       vehicles: async (root, { lat, lng, startDate, endDate }) => {
-        return prepare(await Vehicle.find());
+        return [{ _id: "lasjdf" }, { _id: "sldfjg" }];
       },
       trip: async (root, { tripId }) => {
         return prepare(await Trip.findOne(ObjectId(tripId)));
@@ -45,16 +45,18 @@ module.exports.Schema = (async () => {
     },
 
     User: {
-      userVehicles: async ({ _id }) => {
-        return (await Vehicle.find({ userId: _id }).toArray()).map(prepare);
+      userVehicles: async ({ userId }) => {
+        return (await Vehicle.find({ userId: userId }).toArray()).map(prepare);
       },
-      userTrips: async ({ _id, startDate, endDate }) => {
-        return (await User.find({ userId: _id }).toArray()).map(prepare);
+      userTrips: async ({ userId, startDate, endDate }) => {
+        return (await Trip.find({ userId: userId }).toArray()).map(prepare);
       }
     },
     Vehicle: {
-      vehicleTrips: async ({ _id, startDate, endDate }) => {
-        return (await Trip.find({ vehicleId: _id }).toArray()).map(prepare);
+      vehicleTrips: async ({ vehicleId, startDate, endDate }) => {
+        return (await Trip.find({ vehicleId: vehicleId }).toArray()).map(
+          prepare
+        );
       }
     },
     Trip: {

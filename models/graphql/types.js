@@ -47,7 +47,7 @@ module.exports.typeDefs = `
     type Vehicle {
       _id: String
       vehicleTrips: [Trip!]!
-      ownerId: String,
+      owner: User,
       licensePlate: String,
       make: String,
       model: String,
@@ -81,7 +81,7 @@ module.exports.typeDefs = `
       _id: String
       deviceLogs: [String!]!
       userId: String,
-      vehicleId: String,
+      vehicle: Vehicle,
       paymentCardId: String,
       promotionId: String,
       hadIssues: String,
