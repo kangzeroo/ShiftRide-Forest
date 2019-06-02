@@ -24,7 +24,13 @@ mongoose.connect(
 const db = mongoose.connection;
 db.on("error", console.error.bind(console, "connection error:"));
 db.once("open", async function() {
-  app.use(cors());
+  app.use(
+    cors({
+      origin: [/\.forestadmin\.com$/],
+      allowedHeaders: ["Authorization", "X-Requested-With", "Content-Type"],
+      credentials: true
+    })
+  );
 
   // connect with ForestAdmin mongoose
   app.use(
