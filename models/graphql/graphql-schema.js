@@ -21,35 +21,29 @@ module.exports.Schema = (async () => {
       vehicle: async (root, { vehicleId }) => {
         return prepare(await Vehicle.findOne(ObjectId(vehicleId)));
       },
-      geoVehicles: async (root, { lat, lng, startDate, endDate }) => {
+      vehicles: async (root, { lat, lng, startDate, endDate }) => {
         return prepare(await Vehicle.find());
       },
       trip: async (root, { tripId }) => {
         return prepare(await Trip.findOne(ObjectId(tripId)));
+      },
+      trips: async (root, { startDate, endDate }) => {
+        return prepare(await Trip.findOne(ObjectId(tripId)));
+      },
+      fleet: async (root, { userId }) => {
+        return prepare(await Vehicle.find());
+      },
+      bookings: async (root, { vehicleIds, startDate, endDate }) => {
+        return prepare(await Trip.find());
       }
-      // deviceHistory: async (root, { deviceId }) => {
-      //   return prepare(
-      //     await Promise.resolve({ status: "querying dynamodb..." })
-      //   );
-      // }
     },
 
-    // Mutation: {
-    //   startTrip: async (root, args, context, info) => {},
-    //   endTrip: async (root, args, context, info) => {},
-    //   updateVehicle: async (root, args, context, info) => {}
-    //   // requestBooking: async (root, args, context, info) => {},
-    //   // approveBooking: async (root, args, context, info) => {},
-    //
-    //   // doSomething: async (root, args, context, info) => {
-    //   //   const res = await Posts.insertOne(args);
-    //   //   return prepare(res.ops[0]); // https://mongodb.github.io/node-mongodb-native/3.1/api/Collection.html#~insertOneWriteOpResult
-    //   // },
-    //   // doSomething: async (root, args) => {
-    //   //   const res = await Comments.insert(args);
-    //   //   return prepare(await Comments.findOne({ _id: res.insertedIds[1] }));
-    //   // }
-    // },
+    Mutation: {
+      startTrip: async (root, args, context, info) => {},
+      endTrip: async (root, args, context, info) => {},
+      updateVehicle: async (root, args, context, info) => {}
+    },
+
     User: {
       userVehicles: async ({ _id }) => {
         return (await Vehicle.find({ userId: _id }).toArray()).map(prepare);
@@ -61,6 +55,11 @@ module.exports.Schema = (async () => {
     Vehicle: {
       vehicleTrips: async ({ _id, startDate, endDate }) => {
         return (await Trip.find({ vehicleId: _id }).toArray()).map(prepare);
+      }
+    },
+    Trip: {
+      deviceLogs: async ({ deviceId, startTime, endTime }) => {
+        return Promise.resolve("Querying dynamodb device logs...");
       }
     },
     Date: new GraphQLScalarType({

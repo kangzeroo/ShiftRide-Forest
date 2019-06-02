@@ -1391,7 +1391,7 @@
       "validations": []
     }, {
       "field": "lockboxLocation",
-      "type": "String",
+      "type": "Json",
       "defaultValue": null,
       "enums": null,
       "integration": null,
@@ -1780,6 +1780,20 @@
       "inverseOf": null,
       "validations": []
     }, {
+      "field": "eventType",
+      "type": "String",
+      "defaultValue": null,
+      "enums": null,
+      "integration": null,
+      "isFilterable": true,
+      "isReadOnly": false,
+      "isRequired": false,
+      "isSortable": true,
+      "isVirtual": false,
+      "reference": null,
+      "inverseOf": null,
+      "validations": []
+    }, {
       "field": "startAt",
       "type": "Date",
       "defaultValue": null,
@@ -1794,8 +1808,36 @@
       "inverseOf": null,
       "validations": []
     }, {
+      "field": "tripId",
+      "type": "String",
+      "defaultValue": null,
+      "enums": null,
+      "integration": null,
+      "isFilterable": true,
+      "isReadOnly": false,
+      "isRequired": false,
+      "isSortable": true,
+      "isVirtual": false,
+      "reference": null,
+      "inverseOf": null,
+      "validations": []
+    }, {
       "field": "updatedAt",
       "type": "Date",
+      "defaultValue": null,
+      "enums": null,
+      "integration": null,
+      "isFilterable": true,
+      "isReadOnly": false,
+      "isRequired": false,
+      "isSortable": true,
+      "isVirtual": false,
+      "reference": null,
+      "inverseOf": null,
+      "validations": []
+    }, {
+      "field": "userId",
+      "type": "String",
       "defaultValue": null,
       "enums": null,
       "integration": null,

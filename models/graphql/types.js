@@ -4,19 +4,22 @@ module.exports.typeDefs = `
     type Query {
       user(userId: String): User
       vehicle(vehicleId: String): Vehicle
-      geoVehicles(_id: String): [Vehicle!]!
-      trip(tripId: String): Trip
+      vehicles(lat: Float, lng: Float, startDate: Date, endDate: Date): [Vehicle!]!
+      trip(tripId: String): Trip,
+      trips(startDate: Date, endDate: Date): [Trip!]!
+      fleet(userId: String): [Vehicle!]!
+      bookings(vehicleIds: [String], startDate: Date, endDate: Date): [Trip!]!
     }
 
-    # type Mutation {
-    #   startTrip(userId: String, vehicleId: String): Trip
-    #   endTrip(userId: String, tripId: String): Trip
-    #   updateVehicle(vehicle: Vehicle): Vehicle
-    # }
+    type Mutation {
+      startTrip(userId: String, vehicleId: String): Trip
+      endTrip(userId: String, tripId: String): Trip
+      updateVehicle(vehicleId: String): Vehicle
+    }
 
     schema {
       query: Query
-    #  mutation: Mutation
+      mutation: Mutation
     }
 
     type User {
@@ -76,6 +79,7 @@ module.exports.typeDefs = `
 
     type Trip {
       _id: String
+      deviceLogs: [String!]!
       userId: String,
       vehicleId: String,
       paymentCardId: String,
