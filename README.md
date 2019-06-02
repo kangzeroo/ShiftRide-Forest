@@ -35,17 +35,19 @@ Click [here](http://localhost:6010/graphiql) to view the GraphQL schema and run 
 
 ## Step 3: Shut Down
 
-To shut down or restart ForestAdmin, run the following commands:
+Simple: To stop ForestAdmin and start again, press `cmd + z` and then:
+
+```bash
+$ npm run docker-release
+$ npm run docker
+```
+
+Advanced: To shut down or restart ForestAdmin, find existing ports in use or kill processes:
 
 ```bash
 $ docker ps -a
 $ docker kill <CONTAINER_ID>
 $ docker rm <CONTAINER_ID>
-```
-
-To find existing ports in use and kill the process:
-
-```bash
 $ sudo lsof -i tcp:6010
 $ sudo kill <PID>
 ```
