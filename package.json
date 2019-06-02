@@ -8,6 +8,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "docker build -t shiftride-forest .",
     "docker": "docker run -p 6010:6010 --name shiftride-sapling shiftride-forest",
+    "docker-prod": "docker run -d -p 6010:6010 --name shiftride-sapling shiftride-forest",
     "docker-release": "docker stop shiftride-sapling && docker rm shiftride-sapling"
   },
   "author": "",

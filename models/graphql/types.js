@@ -46,6 +46,7 @@ module.exports.typeDefs = `
 
     type Vehicle {
       _id: String
+      alias: String
       vehicleTrips: [Trip!]!
       owner: User,
       licensePlate: String,

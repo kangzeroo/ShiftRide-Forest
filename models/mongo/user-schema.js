@@ -18,7 +18,8 @@ const schema = mongoose.Schema(
     phoneNumber: String,
     profilePicture: String,
     credit: Number,
-    canBook: Boolean
+    canBook: Boolean,
+    hasFleet: Boolean
   },
   {
     timestamps: true

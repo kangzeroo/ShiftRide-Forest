@@ -36,6 +36,7 @@ db.once("open", async function() {
   app.use(
     require("forest-express-mongoose").init({
       modelsDir: __dirname + "/models/mongo",
+      configDir: __dirname + "/forest/mongo",
       envSecret: process.env.FOREST_ENV_SECRET,
       authSecret: process.env.FOREST_AUTH_SECRET,
       mongoose: mongoose

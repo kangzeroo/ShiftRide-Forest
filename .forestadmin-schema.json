@@ -53,7 +53,7 @@
       "validations": []
     }, {
       "field": "demeritDate",
-      "type": "String",
+      "type": "Date",
       "defaultValue": null,
       "enums": null,
       "integration": null,
@@ -76,7 +76,7 @@
       "isRequired": false,
       "isSortable": true,
       "isVirtual": false,
-      "reference": null,
+      "reference": "Trip._id",
       "inverseOf": null,
       "validations": []
     }, {
@@ -104,7 +104,7 @@
       "isRequired": false,
       "isSortable": true,
       "isVirtual": false,
-      "reference": null,
+      "reference": "User._id",
       "inverseOf": null,
       "validations": []
     }, {
@@ -257,7 +257,7 @@
       "isRequired": false,
       "isSortable": true,
       "isVirtual": false,
-      "reference": null,
+      "reference": "Vehicle._id",
       "inverseOf": null,
       "validations": []
     }],
@@ -453,6 +453,20 @@
       "isSortable": true,
       "isVirtual": false,
       "reference": null,
+      "inverseOf": null,
+      "validations": []
+    }, {
+      "field": "userId",
+      "type": "String",
+      "defaultValue": null,
+      "enums": null,
+      "integration": null,
+      "isFilterable": true,
+      "isReadOnly": false,
+      "isRequired": false,
+      "isSortable": true,
+      "isVirtual": false,
+      "reference": "User._id",
       "inverseOf": null,
       "validations": []
     }],
@@ -744,7 +758,7 @@
       "isRequired": false,
       "isSortable": true,
       "isVirtual": false,
-      "reference": null,
+      "reference": "PaymentCard._id",
       "inverseOf": null,
       "validations": []
     }, {
@@ -786,7 +800,7 @@
       "isRequired": false,
       "isSortable": true,
       "isVirtual": false,
-      "reference": null,
+      "reference": "Promotion._id",
       "inverseOf": null,
       "validations": []
     }, {
@@ -842,7 +856,7 @@
       "isRequired": false,
       "isSortable": true,
       "isVirtual": false,
-      "reference": null,
+      "reference": "User._id",
       "inverseOf": null,
       "validations": []
     }, {
@@ -870,7 +884,7 @@
       "isRequired": false,
       "isSortable": true,
       "isVirtual": false,
-      "reference": null,
+      "reference": "Vehicle._id",
       "inverseOf": null,
       "validations": []
     }, {
@@ -973,6 +987,20 @@
     }, {
       "field": "email",
       "type": "String",
+      "defaultValue": null,
+      "enums": null,
+      "integration": null,
+      "isFilterable": true,
+      "isReadOnly": false,
+      "isRequired": false,
+      "isSortable": true,
+      "isVirtual": false,
+      "reference": null,
+      "inverseOf": null,
+      "validations": []
+    }, {
+      "field": "hasFleet",
+      "type": "Boolean",
       "defaultValue": null,
       "enums": null,
       "integration": null,
@@ -1208,6 +1236,20 @@
       "inverseOf": null,
       "validations": []
     }, {
+      "field": "alias",
+      "type": "String",
+      "defaultValue": null,
+      "enums": null,
+      "integration": null,
+      "isFilterable": true,
+      "isReadOnly": false,
+      "isRequired": false,
+      "isSortable": true,
+      "isVirtual": false,
+      "reference": null,
+      "inverseOf": null,
+      "validations": []
+    }, {
       "field": "bodyType",
       "type": "String",
       "defaultValue": null,
@@ -1363,7 +1405,16 @@
       "validations": []
     }, {
       "field": "location",
-      "type": "Json",
+      "type": {
+        "fields": [{
+          "field": "type",
+          "type": "Enum",
+          "enums": ["Point"]
+        }, {
+          "field": "coordinates",
+          "type": ["Number"]
+        }]
+      },
       "defaultValue": null,
       "enums": null,
       "integration": null,
@@ -1372,6 +1423,20 @@
       "isRequired": false,
       "isSortable": true,
       "isVirtual": false,
+      "reference": null,
+      "inverseOf": null,
+      "validations": []
+    }, {
+      "field": "location_geopoint",
+      "type": "String",
+      "defaultValue": null,
+      "enums": null,
+      "integration": null,
+      "isFilterable": false,
+      "isReadOnly": true,
+      "isRequired": false,
+      "isSortable": false,
+      "isVirtual": true,
       "reference": null,
       "inverseOf": null,
       "validations": []
@@ -1391,7 +1456,16 @@
       "validations": []
     }, {
       "field": "lockboxLocation",
-      "type": "Json",
+      "type": {
+        "fields": [{
+          "field": "type",
+          "type": "Enum",
+          "enums": ["Point"]
+        }, {
+          "field": "coordinates",
+          "type": ["Number"]
+        }]
+      },
       "defaultValue": null,
       "enums": null,
       "integration": null,
@@ -1414,6 +1488,20 @@
       "isRequired": false,
       "isSortable": true,
       "isVirtual": false,
+      "reference": null,
+      "inverseOf": null,
+      "validations": []
+    }, {
+      "field": "lockbox_geopoint",
+      "type": "String",
+      "defaultValue": null,
+      "enums": null,
+      "integration": null,
+      "isFilterable": false,
+      "isReadOnly": true,
+      "isRequired": false,
+      "isSortable": false,
+      "isVirtual": true,
       "reference": null,
       "inverseOf": null,
       "validations": []
@@ -1456,7 +1544,7 @@
       "isRequired": false,
       "isSortable": true,
       "isVirtual": false,
-      "reference": null,
+      "reference": "User._id",
       "inverseOf": null,
       "validations": []
     }, {
@@ -1707,7 +1795,7 @@
       "isRequired": false,
       "isSortable": true,
       "isVirtual": false,
-      "reference": null,
+      "reference": "User._id",
       "inverseOf": null,
       "validations": []
     }, {
@@ -1721,7 +1809,7 @@
       "isRequired": false,
       "isSortable": true,
       "isVirtual": false,
-      "reference": null,
+      "reference": "Vehicle._id",
       "inverseOf": null,
       "validations": []
     }],
@@ -1818,7 +1906,7 @@
       "isRequired": false,
       "isSortable": true,
       "isVirtual": false,
-      "reference": null,
+      "reference": "Trip._id",
       "inverseOf": null,
       "validations": []
     }, {
@@ -1846,7 +1934,7 @@
       "isRequired": false,
       "isSortable": true,
       "isVirtual": false,
-      "reference": null,
+      "reference": "User._id",
       "inverseOf": null,
       "validations": []
     }, {
@@ -1860,7 +1948,7 @@
       "isRequired": false,
       "isSortable": true,
       "isVirtual": false,
-      "reference": null,
+      "reference": "Vehicle._id",
       "inverseOf": null,
       "validations": []
     }],

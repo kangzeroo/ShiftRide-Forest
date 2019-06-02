@@ -1,9 +1,11 @@
 const { ObjectId } = require("mongodb");
 const mongoose = require("mongoose");
+const Schema = mongoose.Schema;
 
 const schema = mongoose.Schema(
   {
-    ownerId: ObjectId,
+    ownerId: { type: Schema.Types.ObjectId, ref: "User" },
+    alias: String,
     licensePlate: String,
     make: String,
     model: String,
@@ -15,7 +17,17 @@ const schema = mongoose.Schema(
     costMultiple: Number,
     gasMultiple: Number,
     hasGasCard: Boolean,
-    location: Array,
+    location: {
+      type: {
+        type: String, // Don't do `{ location: { type: String } }`
+        enum: ["Point"], // 'location.type' must be 'Point'
+        required: false
+      },
+      coordinates: {
+        type: [Number],
+        required: true
+      }
+    },
     parkingDescription: String,
     fullAddress: String,
     bodyType: String,
@@ -29,12 +41,29 @@ const schema = mongoose.Schema(
     photos: Array,
     specialInstructions: String,
     lockboxCode: String,
-    lockboxLocation: Array,
+    lockboxLocation: {
+      type: {
+        type: String, // Don't do `{ location: { type: String } }`
+        enum: ["Point"], // 'location.type' must be 'Point'
+        required: false
+      },
+      coordinates: {
+        type: [Number],
+        required: true
+      }
+    },
     lockboxVideoUrl: String
   },
   {
     timestamps: true
   }
 );
+
+schema.pre("save", function(next) {
+  if (this.ownerId) {
+    this.ownerId = mongoose.Types.ObjectId(this.ownerId);
+  }
+  next();
+});
 
 module.exports = mongoose.model("Vehicle", schema);
