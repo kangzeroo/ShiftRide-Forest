@@ -9,9 +9,9 @@ const { typeDefs } = require("./types");
 module.exports.Schema = (async () => {
   const db = await MongoClient.connect(process.env.MONGO_DB_CONNECTION_STRING);
 
-  const Vehicle = require("../mongo-models/vehicle-schema");
-  const User = require("../mongo-models/user-schema");
-  const Trip = require("../mongo-models/trip-schema");
+  const Vehicle = require("../mongo/vehicle-schema");
+  const User = require("../mongo/user-schema");
+  const Trip = require("../mongo/trip-schema");
 
   const resolvers = {
     Query: {
@@ -27,6 +27,11 @@ module.exports.Schema = (async () => {
       trip: async (root, { tripId }) => {
         return prepare(await Trip.findOne(ObjectId(tripId)));
       }
+      // deviceHistory: async (root, { deviceId }) => {
+      //   return prepare(
+      //     await Promise.resolve({ status: "querying dynamodb..." })
+      //   );
+      // }
     },
 
     // Mutation: {

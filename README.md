@@ -11,10 +11,12 @@ Additional Documentation:
 - [Trello board](https://trello.com/b/B1wqfLTR/shiftride-tech)
 - [GraphQL schema](http://localhost:6010/graphiql)
 - Figma Designs
+- [Mongo Atlas](https://cloud.mongodb.com/v2/5cea1a8ff2a30b0df1cc302e#clusters)
 
 ## Step 0: Prerequisites
 
 Be sure to have a `.env` file at your folder root, and have `Docker Desktop` installed on your OS.
+Please also have `Docker Desktop` for MacOS or Windows running on your machine before attempting Step 1.
 
 ## Step 1: To Run
 
