@@ -43,6 +43,13 @@ $ docker kill <CONTAINER_ID>
 $ docker rm <CONTAINER_ID>
 ```
 
+To find and kill existing ports in use:
+
+```bash
+$ sudo lsof -i tcp:3000
+$ sudo kill <PORT>
+```
+
 Now your docker container is cleaned up & your ports are cleared. You can run `Step 1` again to restart ForestAdmin.
 
 ## Folder Directory
