@@ -7,6 +7,7 @@ const { graphqlExpress, graphiqlExpress } = require("graphql-server-express");
 const { absorb } = require("./models/graphql/mutations/absorb");
 const app = express();
 const port = 6010;
+console.log(`Running server in ${process.env.NODE_ENV}`);
 
 // Set Absolute Paths across backend
 global.base_dir = __dirname;

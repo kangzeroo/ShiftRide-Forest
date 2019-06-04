@@ -1,10 +1,12 @@
+// vehicles(lat: Float, lng: Float, startDate: Date, endDate: Date): [Vehicle!]!
+
 module.exports.typeDefs = `
     scalar Date
 
     type Query {
       user(userId: String): User
       vehicle(vehicleId: String): Vehicle
-      vehicles(lat: Float, lng: Float, startDate: Date, endDate: Date): [Vehicle!]!
+      vehicles(stamp: String): [Vehicle!]!
       trip(tripId: String): Trip,
       trips(startDate: Date, endDate: Date): [Trip!]!
       fleet(userId: String): [Vehicle!]!
@@ -97,4 +99,6 @@ module.exports.typeDefs = `
       bookedAtLocation: String,
       userNotes: String
     }
+
+
 `;

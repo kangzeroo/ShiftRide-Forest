@@ -5,6 +5,7 @@ const { GraphQLScalarType } = require("graphql");
 const { Kind } = require("graphql/language");
 const { prepare } = require("../../util/index");
 const { typeDefs } = require("./types");
+const { findVehicleById, findVehicles } = require("./queries/mongo-queries");
 
 module.exports.Schema = (async () => {
   const db = await MongoClient.connect(process.env.MONGO_DB_CONNECTION_STRING);
@@ -19,10 +20,10 @@ module.exports.Schema = (async () => {
         return prepare(await User.findOne(ObjectId(userId)));
       },
       vehicle: async (root, { vehicleId }) => {
-        return prepare(await Vehicle.findOne(ObjectId(vehicleId)));
+        return findVehicleById({ vehicleId });
       },
       vehicles: async (root, { lat, lng, startDate, endDate }) => {
-        return [{ _id: "lasjdf" }, { _id: "sldfjg" }];
+        return findVehicles();
       },
       trip: async (root, { tripId }) => {
         return prepare(await Trip.findOne(ObjectId(tripId)));

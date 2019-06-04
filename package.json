@@ -4,7 +4,8 @@
   "description": "ShiftRide backend managed by ForestAdmin",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon index.js",
+    "start": "NODE_ENV=development nodemon index.js",
+    "start-prod": "NODE_ENV=production nodemon index.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "docker build -t shiftride-forest .",
     "docker": "docker run -p 6010:6010 --name shiftride-sapling shiftride-forest",
@@ -21,6 +22,7 @@
     "graphql": "^14.3.1",
     "graphql-server-express": "^1.4.0",
     "graphql-tools": "^4.0.4",
+    "graphql-type-json": "^0.3.0",
     "mongoose": "^5.5.11",
     "nodemon": "^1.19.1",
     "pg": "^7.11.0",
