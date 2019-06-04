@@ -45,6 +45,9 @@ db.once("open", async function() {
 
   // Set Routes
   app.get("/", (req, res) => res.send("ShiftRide-Forest API is running..."));
+  app.get("/test", (req, res) =>
+    res.status(200).send({ message: "Alive and well", timestamp: new Date() })
+  );
 
   // graphql
   const { Schema } = require("./models/graphql/graphql-schema");

@@ -41,17 +41,7 @@ const schema = mongoose.Schema(
     photos: Array,
     specialInstructions: String,
     lockboxCode: String,
-    lockboxLocation: {
-      type: {
-        type: String, // Don't do `{ location: { type: String } }`
-        enum: ["Point"], // 'location.type' must be 'Point'
-        required: false
-      },
-      coordinates: {
-        type: [Number],
-        required: true
-      }
-    },
+    lockboxLocation: String,
     lockboxVideoUrl: String
   },
   {
