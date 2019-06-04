@@ -17,7 +17,7 @@ const schema = mongoose.Schema(
     email: String,
     phoneNumber: String,
     profilePicture: String,
-    credit: Number,
+    storeCredit: Number,
     canBook: Boolean,
     hasFleet: Boolean
   },

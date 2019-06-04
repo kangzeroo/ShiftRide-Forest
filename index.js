@@ -4,6 +4,7 @@ const express = require("express");
 const cors = require("cors");
 const bodyParser = require("body-parser");
 const { graphqlExpress, graphiqlExpress } = require("graphql-server-express");
+const { absorb } = require("./models/graphql/mutations/absorb");
 const app = express();
 const port = 6010;
 
@@ -48,6 +49,16 @@ db.once("open", async function() {
   app.get("/test", (req, res) =>
     res.status(200).send({ message: "Alive and well", timestamp: new Date() })
   );
+  app.post("/absorb", async (req, res) => {
+    console.log("========================== POST /absorb");
+    absorb(req)
+      .then(result => {
+        res.status(200).send(result);
+      })
+      .catch(err => {
+        res.status(501).send(err);
+      });
+  });
 
   // graphql
   const { Schema } = require("./models/graphql/graphql-schema");

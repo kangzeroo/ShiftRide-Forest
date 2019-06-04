@@ -679,7 +679,16 @@
       "validations": []
     }, {
       "field": "bookedAtLocation",
-      "type": "String",
+      "type": {
+        "fields": [{
+          "field": "type",
+          "type": "Enum",
+          "enums": ["Point"]
+        }, {
+          "field": "coordinates",
+          "type": ["Number"]
+        }]
+      },
       "defaultValue": null,
       "enums": null,
       "integration": null,
@@ -707,21 +716,7 @@
       "validations": []
     }, {
       "field": "hadIssues",
-      "type": "String",
-      "defaultValue": null,
-      "enums": null,
-      "integration": null,
-      "isFilterable": true,
-      "isReadOnly": false,
-      "isRequired": false,
-      "isSortable": true,
-      "isVirtual": false,
-      "reference": null,
-      "inverseOf": null,
-      "validations": []
-    }, {
-      "field": "notes",
-      "type": "String",
+      "type": "Boolean",
       "defaultValue": null,
       "enums": null,
       "integration": null,
@@ -820,6 +815,20 @@
     }, {
       "field": "returnedAt",
       "type": "Date",
+      "defaultValue": null,
+      "enums": null,
+      "integration": null,
+      "isFilterable": true,
+      "isReadOnly": false,
+      "isRequired": false,
+      "isSortable": true,
+      "isVirtual": false,
+      "reference": null,
+      "inverseOf": null,
+      "validations": []
+    }, {
+      "field": "staffNotes",
+      "type": "String",
       "defaultValue": null,
       "enums": null,
       "integration": null,
@@ -959,20 +968,6 @@
     }, {
       "field": "createdAt",
       "type": "Date",
-      "defaultValue": null,
-      "enums": null,
-      "integration": null,
-      "isFilterable": true,
-      "isReadOnly": false,
-      "isRequired": false,
-      "isSortable": true,
-      "isVirtual": false,
-      "reference": null,
-      "inverseOf": null,
-      "validations": []
-    }, {
-      "field": "credit",
-      "type": "Number",
       "defaultValue": null,
       "enums": null,
       "integration": null,
@@ -1169,6 +1164,20 @@
     }, {
       "field": "status",
       "type": "String",
+      "defaultValue": null,
+      "enums": null,
+      "integration": null,
+      "isFilterable": true,
+      "isReadOnly": false,
+      "isRequired": false,
+      "isSortable": true,
+      "isVirtual": false,
+      "reference": null,
+      "inverseOf": null,
+      "validations": []
+    }, {
+      "field": "storeCredit",
+      "type": "Number",
       "defaultValue": null,
       "enums": null,
       "integration": null,
@@ -1456,16 +1465,7 @@
       "validations": []
     }, {
       "field": "lockboxLocation",
-      "type": {
-        "fields": [{
-          "field": "type",
-          "type": "Enum",
-          "enums": ["Point"]
-        }, {
-          "field": "coordinates",
-          "type": ["Number"]
-        }]
-      },
+      "type": "String",
       "defaultValue": null,
       "enums": null,
       "integration": null,

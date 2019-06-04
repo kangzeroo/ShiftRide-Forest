@@ -8,8 +8,9 @@ const schema = mongoose.Schema(
     vehicleId: { type: Schema.Types.ObjectId, ref: "Vehicle" },
     paymentCardId: { type: Schema.Types.ObjectId, ref: "PaymentCard" },
     promotionId: { type: Schema.Types.ObjectId, ref: "Promotion" },
-    hadIssues: String,
-    notes: String,
+    hadIssues: Boolean,
+    staffNotes: String,
+    userNotes: String,
     paymentPaused: Boolean,
     paymentFailed: Boolean,
     paidAt: Date,
@@ -17,8 +18,17 @@ const schema = mongoose.Schema(
     returnBy: Date,
     bookedAt: Date,
     returnedAt: Date,
-    bookedAtLocation: String,
-    userNotes: String
+    bookedAtLocation: {
+      type: {
+        type: String, // Don't do `{ location: { type: String } }`
+        enum: ["Point"], // 'location.type' must be 'Point'
+        required: false
+      },
+      coordinates: {
+        type: [Number],
+        required: true
+      }
+    }
   },
   {
     timestamps: true
