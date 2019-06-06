@@ -9,9 +9,18 @@ module.exports = Liana.collection("Trip", {
       get: trip => {
         console.log("0000000---------000000");
         console.log(trip);
-        return `${trip.bookedVehicleLocation.coordinates[0]},${
+        if (
+          trip.bookedVehicleLocation &&
+          trip.bookedVehicleLocation.coordinates &&
+          trip.bookedVehicleLocation.coordinates[0] &&
           trip.bookedVehicleLocation.coordinates[1]
-        }`;
+        ) {
+          return `${trip.bookedVehicleLocation.coordinates[0]},${
+            trip.bookedVehicleLocation.coordinates[1]
+          }`;
+        } else {
+          return "";
+        }
       }
     }
   ]

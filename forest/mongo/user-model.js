@@ -8,9 +8,18 @@ module.exports = Liana.collection("User", {
       get: user => {
         console.log("0000000---------000000");
         console.log(user);
-        return `${user.location.coordinates[0]},${
+        if (
+          user.location &&
+          user.location.coordinates &&
+          user.location.coordinates[0] &&
           user.location.coordinates[1]
-        }`;
+        ) {
+          return `${user.location.coordinates[0]},${
+            user.location.coordinates[1]
+          }`;
+        } else {
+          return "";
+        }
       }
     }
   ]
