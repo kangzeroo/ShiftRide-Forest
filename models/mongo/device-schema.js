@@ -21,7 +21,7 @@ schema.pre("save", function(next) {
   if (this.vehicleId) {
     this.vehicleId = mongoose.Types.ObjectId(this.vehicleId);
   }
-  // next();
+  next();
 });
 
 module.exports = mongoose.model("Device", schema);

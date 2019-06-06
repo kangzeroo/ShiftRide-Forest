@@ -701,6 +701,29 @@
       "inverseOf": null,
       "validations": []
     }, {
+      "field": "bookedVehicleLocation",
+      "type": {
+        "fields": [{
+          "field": "type",
+          "type": "Enum",
+          "enums": ["Point"]
+        }, {
+          "field": "coordinates",
+          "type": ["Number"]
+        }]
+      },
+      "defaultValue": null,
+      "enums": null,
+      "integration": null,
+      "isFilterable": true,
+      "isReadOnly": false,
+      "isRequired": false,
+      "isSortable": true,
+      "isVirtual": false,
+      "reference": null,
+      "inverseOf": null,
+      "validations": []
+    }, {
       "field": "createdAt",
       "type": "Date",
       "defaultValue": null,
@@ -837,6 +860,20 @@
       "isRequired": false,
       "isSortable": true,
       "isVirtual": false,
+      "reference": null,
+      "inverseOf": null,
+      "validations": []
+    }, {
+      "field": "trip_start_geopoint",
+      "type": "String",
+      "defaultValue": null,
+      "enums": null,
+      "integration": null,
+      "isFilterable": false,
+      "isReadOnly": true,
+      "isRequired": false,
+      "isSortable": false,
+      "isVirtual": true,
       "reference": null,
       "inverseOf": null,
       "validations": []
@@ -1134,6 +1171,29 @@
       "inverseOf": null,
       "validations": []
     }, {
+      "field": "location",
+      "type": {
+        "fields": [{
+          "field": "type",
+          "type": "Enum",
+          "enums": ["Point"]
+        }, {
+          "field": "coordinates",
+          "type": ["Number"]
+        }]
+      },
+      "defaultValue": null,
+      "enums": null,
+      "integration": null,
+      "isFilterable": true,
+      "isReadOnly": false,
+      "isRequired": false,
+      "isSortable": true,
+      "isVirtual": false,
+      "reference": null,
+      "inverseOf": null,
+      "validations": []
+    }, {
       "field": "phoneNumber",
       "type": "String",
       "defaultValue": null,
@@ -1200,6 +1260,20 @@
       "isRequired": false,
       "isSortable": true,
       "isVirtual": false,
+      "reference": null,
+      "inverseOf": null,
+      "validations": []
+    }, {
+      "field": "user_location_geopoint",
+      "type": "String",
+      "defaultValue": null,
+      "enums": null,
+      "integration": null,
+      "isFilterable": false,
+      "isReadOnly": true,
+      "isRequired": false,
+      "isSortable": false,
+      "isVirtual": true,
       "reference": null,
       "inverseOf": null,
       "validations": []
@@ -1436,20 +1510,6 @@
       "inverseOf": null,
       "validations": []
     }, {
-      "field": "location_geopoint",
-      "type": "String",
-      "defaultValue": null,
-      "enums": null,
-      "integration": null,
-      "isFilterable": false,
-      "isReadOnly": true,
-      "isRequired": false,
-      "isSortable": false,
-      "isVirtual": true,
-      "reference": null,
-      "inverseOf": null,
-      "validations": []
-    }, {
       "field": "lockboxCode",
       "type": "String",
       "defaultValue": null,
@@ -1488,20 +1548,6 @@
       "isRequired": false,
       "isSortable": true,
       "isVirtual": false,
-      "reference": null,
-      "inverseOf": null,
-      "validations": []
-    }, {
-      "field": "lockbox_geopoint",
-      "type": "String",
-      "defaultValue": null,
-      "enums": null,
-      "integration": null,
-      "isFilterable": false,
-      "isReadOnly": true,
-      "isRequired": false,
-      "isSortable": false,
-      "isVirtual": true,
       "reference": null,
       "inverseOf": null,
       "validations": []
@@ -1656,6 +1702,34 @@
       "isRequired": false,
       "isSortable": true,
       "isVirtual": false,
+      "reference": null,
+      "inverseOf": null,
+      "validations": []
+    }, {
+      "field": "vehicle_lockbox_geopoint",
+      "type": "String",
+      "defaultValue": null,
+      "enums": null,
+      "integration": null,
+      "isFilterable": false,
+      "isReadOnly": true,
+      "isRequired": false,
+      "isSortable": false,
+      "isVirtual": true,
+      "reference": null,
+      "inverseOf": null,
+      "validations": []
+    }, {
+      "field": "vehicle_parked_geopoint",
+      "type": "String",
+      "defaultValue": null,
+      "enums": null,
+      "integration": null,
+      "isFilterable": false,
+      "isReadOnly": true,
+      "isRequired": false,
+      "isSortable": false,
+      "isVirtual": true,
       "reference": null,
       "inverseOf": null,
       "validations": []

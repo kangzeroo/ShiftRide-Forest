@@ -4,13 +4,14 @@ module.exports.typeDefs = `
     scalar Date
 
     type Query {
-      user(userId: String): User
-      vehicle(vehicleId: String): Vehicle
-      vehicles(stamp: String): [Vehicle!]!
-      trip(tripId: String): Trip,
-      trips(startDate: Date, endDate: Date): [Trip!]!
-      fleet(userId: String): [Vehicle!]!
-      bookings(vehicleIds: [String], startDate: Date, endDate: Date): [Trip!]!
+      findUserById(userId: String): User
+      findUsers(lat: Float, lng: Float, radius: Float): [User!]!
+      findVehicleById(vehicleId: String): Vehicle
+      findVehicles(lat: Float, lng: Float, radius: Float, startDate: Date, endDate: Date): [Vehicle!]!
+      findTripById(tripId: String): Trip,
+      findTrips(startDate: Date, endDate: Date, lat: Float, lng: Float, radius: Float): [Trip!]!
+      getFleet(userId: String): [Vehicle!]!
+      getFleetBookings(vehicleIds: [String], startDate: Date, endDate: Date): [Trip!]!
     }
 
     type Mutation {
@@ -43,7 +44,8 @@ module.exports.typeDefs = `
       phoneNumber: String,
       profilePicture: String,
       credit: Int,
-      canBook: Boolean
+      canBook: Boolean,
+      location: [Float!]!
     }
 
     type Vehicle {
@@ -97,7 +99,8 @@ module.exports.typeDefs = `
       bookedAt: Date,
       returnedAt: Date,
       bookedAtLocation: String,
-      userNotes: String
+      userNotes: String,
+      bookedVehicleLocation: [Float!]!
     }
 
 

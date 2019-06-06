@@ -28,6 +28,17 @@ const schema = mongoose.Schema(
         type: [Number],
         required: true
       }
+    },
+    bookedVehicleLocation: {
+      type: {
+        type: String, // Don't do `{ location: { type: String } }`
+        enum: ["Point"], // 'location.type' must be 'Point'
+        required: false
+      },
+      coordinates: {
+        type: [Number],
+        required: true
+      }
     }
   },
   {

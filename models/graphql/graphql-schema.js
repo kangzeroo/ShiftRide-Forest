@@ -5,7 +5,16 @@ const { GraphQLScalarType } = require("graphql");
 const { Kind } = require("graphql/language");
 const { prepare } = require("../../util/index");
 const { typeDefs } = require("./types");
-const { findVehicleById, findVehicles } = require("./queries/mongo-queries");
+const {
+  findVehicleById,
+  findVehicles,
+  findUserById,
+  findUsers,
+  findTripById,
+  findTrips,
+  getFleet,
+  getFleetBookings
+} = require("./queries/mongo-queries");
 
 module.exports.Schema = (async () => {
   const db = await MongoClient.connect(process.env.MONGO_DB_CONNECTION_STRING);
@@ -16,26 +25,29 @@ module.exports.Schema = (async () => {
 
   const resolvers = {
     Query: {
-      user: async (root, { userId }) => {
-        return prepare(await User.findOne(ObjectId(userId)));
+      findUserById: async (root, { userId }) => {
+        return findUserById({ userId });
       },
-      vehicle: async (root, { vehicleId }) => {
+      findUsers: async (root, { lat, lng, radius }) => {
+        return findUsers({ lat, lng, radius });
+      },
+      findVehicleById: async (root, { vehicleId }) => {
         return findVehicleById({ vehicleId });
       },
-      vehicles: async (root, { lat, lng, startDate, endDate }) => {
-        return findVehicles();
+      findVehicles: async (root, { lat, lng, radius, startDate, endDate }) => {
+        return findVehicles({ lat, lng, radius, startDate, endDate });
       },
-      trip: async (root, { tripId }) => {
-        return prepare(await Trip.findOne(ObjectId(tripId)));
+      findTripById: async (root, { tripId }) => {
+        return findTripById({ tripId });
       },
-      trips: async (root, { startDate, endDate }) => {
-        return prepare(await Trip.findOne(ObjectId(tripId)));
+      findTrips: async (root, { startDate, endDate, lat, lng, radius }) => {
+        return findTrips({ startDate, endDate });
       },
-      fleet: async (root, { userId }) => {
-        return prepare(await Vehicle.find());
+      getFleet: async (root, { userId }) => {
+        return getFleet({ userId });
       },
-      bookings: async (root, { vehicleIds, startDate, endDate }) => {
-        return prepare(await Trip.find());
+      getFleetBookings: async (root, { vehicleIds, startDate, endDate }) => {
+        return getFleetBookings({ vehicleIds, startDate, endDate });
       }
     },
 
