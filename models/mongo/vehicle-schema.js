@@ -56,4 +56,6 @@ schema.pre("save", function(next) {
   next();
 });
 
+schema.index({ location: "2dsphere" });
+
 module.exports = mongoose.model("Vehicle", schema);

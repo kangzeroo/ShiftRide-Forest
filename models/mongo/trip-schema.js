@@ -62,4 +62,7 @@ schema.pre("save", function(next) {
   next();
 });
 
+schema.index({ bookedAtLocation: "2dsphere" });
+schema.index({ bookedVehicleLocation: "2dsphere" });
+
 module.exports = mongoose.model("Trip", schema);

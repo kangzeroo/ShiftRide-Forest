@@ -7,6 +7,7 @@ const schema = mongoose.Schema(
     licenseFirstName: String,
     licenseLastName: String,
     licenseNumber: String,
+    licenseAddress: String,
     licenseProvince: String,
     licenseCountry: String,
     licensePostalCode: String,
@@ -36,5 +37,7 @@ const schema = mongoose.Schema(
     timestamps: true
   }
 );
+
+schema.index({ location: "2dsphere" });
 
 module.exports = mongoose.model("User", schema);

@@ -7,7 +7,10 @@ module.exports.absorb = async ({ body }) => {
     if (!body.TableName) {
       rej("Missing TableName");
     }
+    console.log("---> hit me");
+    console.log(body);
     const Table = allowedTables(body.TableName);
+    console.log(Table);
     if (Table) {
       console.log("Found a Table called ", body.TableName);
       console.log(convertToArray(body));
