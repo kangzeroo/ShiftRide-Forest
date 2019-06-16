@@ -10,7 +10,8 @@ const schema = mongoose.Schema(
     review: String
   },
   {
-    timestamps: true
+    timestamps: true,
+    strict: false
   }
 );
 

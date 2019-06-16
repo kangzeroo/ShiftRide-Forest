@@ -12,7 +12,8 @@ const schema = mongoose.Schema(
     simId: String
   },
   {
-    timestamps: true
+    timestamps: true,
+    strict: false
   }
 );
 

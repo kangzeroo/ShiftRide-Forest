@@ -14,7 +14,8 @@ const schema = mongoose.Schema(
     promotionCode: String
   },
   {
-    timestamps: true
+    timestamps: true,
+    strict: false
   }
 );
 

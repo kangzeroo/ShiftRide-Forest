@@ -34,10 +34,16 @@ const schema = mongoose.Schema(
     }
   },
   {
-    timestamps: true
+    timestamps: true,
+    strict: false
   }
 );
 
-schema.index({ location: "2dsphere" });
+// schema.index({ location: "2dsphere" });
+const User = mongoose.model("User", schema);
+// User.on("index", function(error) {
+//   // "_id index cannot be sparse"
+//   console.log(error.message);
+// });
 
-module.exports = mongoose.model("User", schema);
+module.exports = User;

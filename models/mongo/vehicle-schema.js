@@ -17,16 +17,23 @@ const schema = mongoose.Schema(
     costMultiple: Number,
     gasMultiple: Number,
     hasGasCard: Boolean,
+    // location: {
+    //   type: {
+    //     type: String, // Don't do `{ location: { type: String } }`
+    //     enum: ["Point"], // 'location.type' must be 'Point'
+    //     required: false
+    //   },
+    //   coordinates: {
+    //     type: [Number],
+    //     required: true
+    //   }
+    // },
     location: {
       type: {
-        type: String, // Don't do `{ location: { type: String } }`
-        enum: ["Point"], // 'location.type' must be 'Point'
-        required: false
+        type: String,
+        default: "Point"
       },
-      coordinates: {
-        type: [Number],
-        required: true
-      }
+      coordinates: [Number]
     },
     parkingDescription: String,
     fullAddress: String,
@@ -45,7 +52,8 @@ const schema = mongoose.Schema(
     lockboxVideoUrl: String
   },
   {
-    timestamps: true
+    timestamps: true,
+    strict: false
   }
 );
 
@@ -56,6 +64,12 @@ schema.pre("save", function(next) {
   next();
 });
 
-schema.index({ location: "2dsphere" });
+// schema.index({ location: "2dsphere" });
 
-module.exports = mongoose.model("Vehicle", schema);
+const Vehicle = mongoose.model("Vehicle", schema);
+// Vehicle.on("index", function(error) {
+//   // "_id index cannot be sparse"
+//   console.log(error.message);
+// });
+
+module.exports = Vehicle;

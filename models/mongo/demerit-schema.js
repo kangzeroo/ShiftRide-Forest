@@ -11,7 +11,8 @@ const schema = mongoose.Schema(
     tripId: { type: Schema.Types.ObjectId, ref: "Trip" }
   },
   {
-    timestamps: true
+    timestamps: true,
+    strict: false
   }
 );
 

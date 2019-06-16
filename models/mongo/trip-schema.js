@@ -17,6 +17,7 @@ const schema = mongoose.Schema(
     voidPayment: Boolean,
     returnBy: Date,
     bookedAt: Date,
+    tripStart: Date,
     returnedAt: Date,
     bookedAtLocation: {
       type: {
@@ -42,7 +43,8 @@ const schema = mongoose.Schema(
     }
   },
   {
-    timestamps: true
+    timestamps: true,
+    strict: false
   }
 );
 
@@ -62,7 +64,12 @@ schema.pre("save", function(next) {
   next();
 });
 
-schema.index({ bookedAtLocation: "2dsphere" });
-schema.index({ bookedVehicleLocation: "2dsphere" });
+// schema.index({ bookedAtLocation: "2dsphere" });
+// schema.index({ bookedVehicleLocation: "2dsphere" });
+const Trip = mongoose.model("Trip", schema);
+// Trip.on("index", function(error) {
+//   // "_id index cannot be sparse"
+//   console.log(error.message);
+// });
 
-module.exports = mongoose.model("Trip", schema);
+module.exports = Trip;

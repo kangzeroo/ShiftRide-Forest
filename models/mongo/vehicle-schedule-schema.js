@@ -12,7 +12,8 @@ const schema = mongoose.Schema(
     eventType: String
   },
   {
-    timestamps: true
+    timestamps: true,
+    strict: false
   }
 );
 
