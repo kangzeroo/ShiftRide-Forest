@@ -18,6 +18,7 @@ module.exports.typeDefs = `
       startTrip(userId: String, vehicleId: String): Trip
       endTrip(userId: String, tripId: String): Trip
       updateVehicle(vehicleId: String): Vehicle
+      bookTrip(vehicleId: String, userId: String): Trip
     }
 
     schema {

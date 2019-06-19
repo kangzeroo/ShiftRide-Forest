@@ -11,6 +11,7 @@ GET		         /renter/search-vehicles					api
 POST		        /renter/create							typeform
 GET+POST	     /renter/:renterId/details					typeform
 GET		         /renter/:renterId/ride/list					api
+POST		        /renter/:renterId/ride/book					api
 POST		        /renter/:renterId/ride/start					api
 POST		        /renter/:renterId/ride/:rideId/end				api
 POST		        /renter/:renterId/ride/:rideId/report				typeform

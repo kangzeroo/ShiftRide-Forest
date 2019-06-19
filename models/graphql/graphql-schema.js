@@ -52,6 +52,7 @@ module.exports.Schema = (async () => {
     },
 
     Mutation: {
+      bookTrip: async (root, args, context, info) => {},
       startTrip: async (root, args, context, info) => {},
       endTrip: async (root, args, context, info) => {},
       updateVehicle: async (root, args, context, info) => {}
