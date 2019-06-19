@@ -13,7 +13,8 @@ const {
   findTripById,
   findTrips,
   getFleet,
-  getFleetBookings
+  getFleetBookings,
+  userTrips
 } = require("./queries/mongo-queries");
 
 module.exports.Schema = (async () => {
@@ -60,17 +61,19 @@ module.exports.Schema = (async () => {
 
     User: {
       userVehicles: async ({ userId }) => {
-        return (await Vehicle.find({ userId: userId }).toArray()).map(prepare);
+        return getFleet({ userId });
       },
       userTrips: async ({ userId, startDate, endDate }) => {
-        return (await Trip.find({ userId: userId }).toArray()).map(prepare);
+        return userTrips({ userId, startDate, endDate });
       }
     },
     Vehicle: {
       vehicleTrips: async ({ vehicleId, startDate, endDate }) => {
-        return (await Trip.find({ vehicleId: vehicleId }).toArray()).map(
-          prepare
-        );
+        return getFleetBookings({
+          vehicleIds: [vehicleId],
+          startDate,
+          endDate
+        });
       }
     },
     Trip: {

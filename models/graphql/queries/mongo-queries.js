@@ -43,12 +43,6 @@ module.exports.findVehicleById = ({ vehicleId }) => {
   return p;
 };
 
-// query {
-// 	findVehicles(lat: 43.4718355,lng: -80.5474189, radius: 1000, startDate: "2019-06-09T23:48:15+0000", endDate: "2019-06-09T23:48:15+0000") {
-// 		alias
-//   }
-// }
-
 module.exports.findVehicles = ({ lat, lng, startDate, endDate, radius }) => {
   const p = new Promise((res, rej) => {
     Vehicle.find(
@@ -134,6 +128,29 @@ module.exports.getFleetBookings = ({ vehicleIds, startDate, endDate }) => {
         vehicleId: {
           $in: vehicleIds
         },
+        tripStart: {
+          $lt: startDate,
+          $gte: endDate
+        }
+      },
+      function(err, user) {
+        if (err) {
+          console.log(err);
+          rej(err);
+        }
+        console.log(user);
+        res(user);
+      }
+    );
+  });
+  return p;
+};
+
+module.exports.userTrips = ({ userId, startDate, endDate }) => {
+  const p = new Promise((res, rej) => {
+    Trips.find(
+      {
+        userId: userId,
         tripStart: {
           $lt: startDate,
           $gte: endDate

@@ -15,8 +15,8 @@ module.exports.typeDefs = `
     }
 
     type Mutation {
-      startTrip(userId: String, vehicleId: String): Trip
-      endTrip(userId: String, tripId: String): Trip
+      startTrip(tripId: String): Trip
+      endTrip(tripId: String): Trip
       updateVehicle(vehicleId: String): Vehicle
       bookTrip(vehicleId: String, userId: String): Trip
     }

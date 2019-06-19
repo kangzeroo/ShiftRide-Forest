@@ -17,17 +17,6 @@ const schema = mongoose.Schema(
     costMultiple: Number,
     gasMultiple: Number,
     hasGasCard: Boolean,
-    // location: {
-    //   type: {
-    //     type: String, // Don't do `{ location: { type: String } }`
-    //     enum: ["Point"], // 'location.type' must be 'Point'
-    //     required: false
-    //   },
-    //   coordinates: {
-    //     type: [Number],
-    //     required: true
-    //   }
-    // },
     location: {
       type: {
         type: String,
