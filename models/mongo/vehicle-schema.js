@@ -19,10 +19,14 @@ const schema = mongoose.Schema(
     hasGasCard: Boolean,
     location: {
       type: {
-        type: String,
-        default: "Point"
+        type: String, // Don't do `{ location: { type: String } }`
+        enum: ["Point"], // 'location.type' must be 'Point'
+        required: false
       },
-      coordinates: [Number]
+      coordinates: {
+        type: [Number],
+        required: true
+      }
     },
     parkingDescription: String,
     fullAddress: String,
@@ -37,7 +41,6 @@ const schema = mongoose.Schema(
     photos: Array,
     specialInstructions: String,
     lockboxCode: String,
-    lockboxLocation: String,
     lockboxVideoUrl: String
   },
   {
